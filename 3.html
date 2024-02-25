@@ -1,0 +1,109 @@
+<html>
+<head>
+	<title> Activity 1 - Group 8</title>
+	
+</head>
+<body background="https://forums.pokemmo.com/uploads/monthly_2023_08/8351171.gif.adeed285532d95b567f988f1158d55e1.gif">
+
+<!--HEADER-->
+<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color: #609EFD;  box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);">
+	<h1> <center> <font color="#f4fdfe"> <font face="Monospace"> <font size="5"> Software Design Lec </font> </font> </font> </center> </h1>
+	<p> <center> <font color="#f4fdfe"> <font face="Monospace"> <font size="5"> 58025 - TTH 1400 - 1530</p> </font></font></font></center>
+</div>
+
+<!--NAVIGATION-->
+<hr>
+	<center>
+	<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color: #A6C9FF; box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);"> <font face="Monospace">
+	<table cellpadding="20" cellspacing="10">
+		<tr>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="Home.html"> Home </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="1.html"> 1 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 2 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 3 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 4 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 5 </a> </td>
+		</tr>
+	</table>
+	</font>
+	</div>
+	</center>
+
+<!--SEARCH BAR-->
+	<form method="get" align="center">
+		<input type="text" textarea name="search" placeholder="Start learning" style="padding: 5px; border-radius: 10px;"></textarea>
+		<button type="submit" style="margin: 0 auto; width: 100px; height: 30px; font-size: 20px; border-radius: 10px;">Search</button>
+	</form>
+<hr>
+
+<!--INSTRUCTION-->
+<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color:#DBE9FF;  box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);">
+	<font color="#065CE0"> <font face="Monospace"> <font size="5">
+	<h2> <b> <center>Activity 1 - Group 8</b> </h2> <br>
+	<h3> <b> <center>3: Instructions</b> </h3>
+	<p align="justify"> 
+	Write a simple program to encrypt a text string using the look-up table or simple algorithm; for example, the text string “Hello World” could be encrypted into the string “ifm mp xpsme” simple by translating each character into its next character in the alphabet- a becomes b, x becomes y and so on.
+	</center> </p> 
+<br>
+<hr>
+
+<!--EXECUTION-->
+	<center>
+	<p>Enter the text to be encrypted:</p>
+	<textarea id="inputText" rows="4" cols="50"></textarea><br>
+	<p>Enter the shift value:</p>
+	<input type="number" id="shiftValue" value="1"><br>
+	<button onclick="encryptText()">Encrypt</button><br>
+	<p>Encrypted Text:</p>
+	<textarea id="outputText" rows="4" cols="50" readonly></textarea>
+
+	<script>
+	function encryptText() {
+	  var inputText = document.getElementById("inputText").value;
+	  var shiftValue = parseInt(document.getElementById("shiftValue").value);
+	  var outputText = "";
+
+	  for (var i = 0; i < inputText.length; i++) {
+		var charCode = inputText.charCodeAt(i);
+
+		// Encrypt uppercase letters
+		if (charCode >= 65 && charCode <= 90) {
+		  outputText += String.fromCharCode(((charCode - 65 + shiftValue) % 26) + 65);
+		}
+		// Encrypt lowercase letters
+		else if (charCode >= 97 && charCode <= 122) {
+		  outputText += String.fromCharCode(((charCode - 97 + shiftValue) % 26) + 97);
+		}
+		// Encrypt numbers
+		else if (charCode >= 48 && charCode <= 57) {
+		  outputText += String.fromCharCode(((charCode - 48 + shiftValue) % 10) + 48);
+		}
+		// Leave non-alphanumeric characters unchanged
+		else {
+		  outputText += inputText.charAt(i);
+		}
+	  }
+
+	  document.getElementById("outputText").value = outputText;
+	}
+	</script>
+	</center>
+	
+<!--NAVIGATION-->
+<hr>
+	<center>
+	<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color: #A6C9FF; box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);">
+	<table cellpadding="20" cellspacing="10">
+		<tr> 
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="Home.html"> Home </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="1.html"> 1 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 2 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 3 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 4 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 5 </a> </td> </td>
+		</tr>
+	</table>
+	</div>
+	</center>
+</body>
+</html>
