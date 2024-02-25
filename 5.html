@@ -1,0 +1,145 @@
+<html>
+<head>
+	<title> Activity 1 - Group 8</title>
+	
+	<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+	<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+</head>
+<body background="https://forums.pokemmo.com/uploads/monthly_2023_08/8351171.gif.adeed285532d95b567f988f1158d55e1.gif">
+
+<!--HEADER-->
+<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color: #609EFD;  box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);">
+	<h1> <center> <font color="#f4fdfe"> <font face="Monospace"> <font size="5"> Software Design Lec </font> </font> </font> </center> </h1>
+	<p> <center> <font color="#f4fdfe"> <font face="Monospace"> <font size="5"> 58025 - TTH 1400 - 1530</p> </font></font></font></center>
+</div>
+
+<!--NAVIGATION-->
+<hr>
+	<center>
+	<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color: #A6C9FF; box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);"> <font face="Monospace">
+	<table cellpadding="20" cellspacing="10">
+		<tr>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="Home.html"> Home </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="1.html"> 1 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 2 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="3.html"> 3 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="4.html"> 4 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="5.html"> 5 </a> </td>
+		</tr>
+	</table>
+	</font>
+	</div>
+	</center>
+
+<!--SEARCH BAR-->
+	<form method="get" align="center">
+		<input type="text" textarea name="search" placeholder="Start learning" style="padding: 5px; border-radius: 10px;"></textarea>
+		<button type="submit" style="margin: 0 auto; width: 100px; height: 30px; font-size: 20px; border-radius: 10px;">Search</button>
+	</form>
+<hr>
+
+<!--INSTRUCTION-->
+<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color:#DBE9FF;  box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);">
+	<font color="#065CE0"> <font face="Monospace"> <font size="5">
+	<h2> <b> <center>Activity 1 - Group 8</b> </h2> <br>
+	<h3> <b> <center>5: Instructions</b> </h3>
+	<p align="justify"> 
+        Write a program, which accepts the name of a person and searches the file for the corresponding phone number.   
+<br><br>
+	</center> </p> 
+<hr>
+
+<!--EXECUTION-->
+<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color:#DBE9FF;  box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);"> <center>
+    <center>
+        <script>
+            var phoneBook = {};
+
+            function addEntry() {
+                var name = document.getElementById("name").value;
+                var phoneNumber = document.getElementById("phoneNumber").value;
+
+                // Add entry to phoneBook
+                phoneBook[name] = phoneNumber;
+
+                // Clear input fields
+                document.getElementById("name").value = "";
+                document.getElementById("phoneNumber").value = "";
+
+                alert("Entry added successfully!");
+            }
+
+            function searchPhoneNumber() {
+                var searchValue = document.getElementById("search").value;
+                var searchResults = [];
+
+                // Ensure search input is not empty
+                if (!searchValue.trim()) {
+                    alert("Please enter a name or phone number to search.");
+                    return false; // Prevent form submission
+                }
+
+                // Search by name
+                for (var name in phoneBook) {
+                    if (name.toLowerCase().includes(searchValue.toLowerCase())) {
+                        searchResults.push(name + "'s phone number is: " + phoneBook[name]);
+                    }
+                }
+
+                // Search by phone number
+                for (var name in phoneBook) {
+                    if (phoneBook[name].includes(searchValue)) {
+                        searchResults.push(name + "'s phone number is: " + phoneBook[name]);
+                    }
+                }
+
+                // Display search results if found
+                if (searchResults.length > 0) {
+                    alert(searchResults.join("\n"));
+                } else {
+                    alert("No matching entries found.");
+                }
+
+                return false; // Prevent form submission
+            }
+        </script>
+
+        <h3>Add New Entry:</h3>
+        <form onsubmit="event.preventDefault(); addEntry();">
+            Name: <input type="text" id="name" placeholder="Enter name"><br>
+            Phone Number: <input type="text" id="phoneNumber" placeholder="Enter phone number"><br>
+            <button type="submit">Add Entry</button>
+        </form>
+
+        <hr>
+
+        <h3>Search Phone Number:</h3>
+        <form onsubmit="event.preventDefault(); searchPhoneNumber();">
+            <input type="text" id="search" placeholder="Enter name or phone number to search"><br>
+            <button type="submit">Search</button>
+        </form>
+    </center>
+
+</center>
+</div> </div>
+
+
+<!--NAVIGATION-->
+<hr>
+	<center>
+	<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color: #A6C9FF; box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);">
+	<table cellpadding="20" cellspacing="10">
+		<tr> 
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="Home.html"> Home </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="1.html"> 1 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 2 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="3.html"> 3 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="4.html"> 4 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="5.html"> 5 </a> </td> </td>
+		</tr>
+	</table>
+	</div>
+	</center>
+</body>
+</html>
