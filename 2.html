@@ -1,0 +1,147 @@
+<html>
+<head>
+	<title> Activity 1 - Group 8</title>
+	
+	<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+	<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+</head>
+<body background="https://forums.pokemmo.com/uploads/monthly_2023_08/8351171.gif.adeed285532d95b567f988f1158d55e1.gif">
+
+<!--HEADER-->
+<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color: #609EFD;  box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);">
+	<h1> <center> <font color="#f4fdfe"> <font face="Monospace"> <font size="5"> Software Design Lec </font> </font> </font> </center> </h1>
+	<p> <center> <font color="#f4fdfe"> <font face="Monospace"> <font size="5"> 58025 - TTH 1400 - 1530</p> </font></font></font></center>
+</div>
+
+<!--NAVIGATION-->
+<hr>
+	<center>
+	<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color: #A6C9FF; box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);"> <font face="Monospace">
+	<table cellpadding="20" cellspacing="10">
+		<tr>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="Home.html"> Home </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="1.html"> 1 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 2 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="3.html"> 3 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="4.html"> 4 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="5.html"> 5 </a> </td>
+		</tr>
+	</table>
+	</font>
+	</div>
+	</center>
+
+<!--SEARCH BAR-->
+	<form method="get" align="center">
+		<input type="text" textarea name="search" placeholder="Start learning" style="padding: 5px; border-radius: 10px;"></textarea>
+		<button type="submit" style="margin: 0 auto; width: 100px; height: 30px; font-size: 20px; border-radius: 10px;">Search</button>
+	</form>
+<hr>
+
+<!--INSTRUCTION-->
+<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color:#DBE9FF;  box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);">
+	<font color="#065CE0"> <font face="Monospace"> <font size="5">
+	<h2> <b> <center>Activity 1 - Group 8</b> </h2> <br>
+	<h3> <b> <center>1: Instructions</b> </h3>
+	<p align="justify"> 
+    Make a program that make compute the student averages and display the individual quiz grades and the average of each of student in the class.  The program that could be used by an instructor to obtain an overview of the class grades.  The program will also display the class average for each quiz  
+<br><br>
+	</center> </p> 
+<hr>
+
+<!--EXECUTION-->
+<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color:#DBE9FF;  box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);"> <center>
+    <center>
+        <h2>Class Grade Overview</h2>
+    <p>Enter the number of students:</p>
+    <input type="number" id="numStudents" min="1"><br>
+    <p>Enter the number of quizzes:</p>
+    <input type="number" id="numQuizzes" min="1"><br>
+    <button onclick="generateForm()">Generate Form</button><br><br>
+    <div id="formContainer"></div>
+    <button onclick="calculateAverages()">Calculate Averages</button><br><br>
+    <div id="results"></div>
+    
+    <script>
+    function generateForm() {
+      var numStudents = parseInt(document.getElementById("numStudents").value);
+      var numQuizzes = parseInt(document.getElementById("numQuizzes").value);
+      var formContainer = document.getElementById("formContainer");
+      formContainer.innerHTML = "";
+    
+      for (var i = 0; i < numStudents; i++) {
+        formContainer.innerHTML += "<p>Student " + (i + 1) + ":</p>";
+        formContainer.innerHTML += "<input type='text' class='studentName' placeholder='Student Name'><br>";
+        for (var j = 0; j < numQuizzes; j++) {
+          formContainer.innerHTML += "<input type='number' class='quizScore' min='0' max='100' placeholder='Quiz " + (j + 1) + " Score'><br>";
+        }
+        formContainer.innerHTML += "<br>";
+      }
+    }
+    
+    function calculateAverages() {
+      var numQuizzes = parseInt(document.getElementById("numQuizzes").value);
+      var quizScores = new Array(numQuizzes).fill(0);
+      var numStudents = 0;
+      var studentAverages = [];
+      var classQuizAverages = new Array(numQuizzes).fill(0);
+    
+      var studentInputs = document.getElementsByClassName("studentName");
+      var quizInputs = document.getElementsByClassName("quizScore");
+      for (var i = 0; i < studentInputs.length; i++) {
+        var studentName = studentInputs[i].value;
+        var totalScore = 0;
+        var numValidQuizzes = 0;
+        for (var j = 0; j < numQuizzes; j++) {
+          var score = parseInt(quizInputs[i * numQuizzes + j].value);
+          if (!isNaN(score)) {
+            totalScore += score;
+            numValidQuizzes++;
+            classQuizAverages[j] += score;
+          }
+        }
+        if (numValidQuizzes > 0) {
+          numStudents++;
+          studentAverages.push(totalScore / numValidQuizzes);
+        }
+      }
+    
+      var results = document.getElementById("results");
+      results.innerHTML = "<h3>Student Averages:</h3>";
+      for (var i = 0; i < studentAverages.length; i++) {
+        results.innerHTML += "Student " + (i + 1) + " (" + studentInputs[i].value + ") Average: " + studentAverages[i].toFixed(2) + "<br>";
+      }
+      results.innerHTML += "<br><h3>Class Average for Each Quiz:</h3>";
+      for (var i = 0; i < numQuizzes; i++) {
+        if (classQuizAverages[i] > 0) {
+          results.innerHTML += "Quiz " + (i + 1) + " Average: " + (classQuizAverages[i] / numStudents).toFixed(2) + "<br>";
+        }
+      }
+      results.innerHTML += "<br><h3>Overall Class Average:</h3>";
+      var overallClassAverage = studentAverages.reduce((a, b) => a + b, 0) / numStudents;
+      results.innerHTML += "Overall Class Average: " + overallClassAverage.toFixed(2);
+    }
+    </script>
+</center>
+</div> </div>
+
+
+<!--NAVIGATION-->
+<hr>
+	<center>
+	<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color: #A6C9FF; box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);">
+	<table cellpadding="20" cellspacing="10">
+		<tr> 
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="Home.html"> Home </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="1.html"> 1 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 2 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="3.html"> 3 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="4.html"> 4 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="5.html"> 5 </a> </td> </td>
+		</tr>
+	</table>
+	</div>
+	</center>
+</body>
+</html>
