@@ -1,0 +1,155 @@
+<html>
+<head>
+	<title> Activity 1 - Group 8</title>
+	
+	<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+	<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+</head>
+<body background="https://forums.pokemmo.com/uploads/monthly_2023_08/8351171.gif.adeed285532d95b567f988f1158d55e1.gif">
+
+<!--HEADER-->
+<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color: #609EFD;  box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);">
+	<h1> <center> <font color="#f4fdfe"> <font face="Monospace"> <font size="5"> Software Design Lec </font> </font> </font> </center> </h1>
+	<p> <center> <font color="#f4fdfe"> <font face="Monospace"> <font size="5"> 58025 - TTH 1400 - 1530</p> </font></font></font></center>
+</div>
+
+<!--NAVIGATION-->
+<hr>
+	<center>
+	<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color: #A6C9FF; box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);"> <font face="Monospace">
+	<table cellpadding="20" cellspacing="10">
+		<tr>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="Home.html"> Home </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="1.html"> 1 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 2 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 3 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 4 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 5 </a> </td>
+		</tr>
+	</table>
+	</font>
+	</div>
+	</center>
+
+<!--SEARCH BAR-->
+	<form method="get" align="center">
+		<input type="text" textarea name="search" placeholder="Start learning" style="padding: 5px; border-radius: 10px;"></textarea>
+		<button type="submit" style="margin: 0 auto; width: 100px; height: 30px; font-size: 20px; border-radius: 10px;">Search</button>
+	</form>
+<hr>
+
+<!--INSTRUCTION-->
+<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color:#DBE9FF;  box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);">
+	<font color="#065CE0"> <font face="Monospace"> <font size="5">
+	<h2> <b> <center>Activity 1 - Group 8</b> </h2> <br>
+	<h3> <b> <center>1: Instructions</b> </h3>
+	<p align="justify"> 
+	Computers are playing an increasing role in education.  Write a program that will help an elementary school student learn multiplication.  Use rand to produce two positive one-digit integers.  
+<br><br>
+	It should then type a question such as:
+<br><br>
+	How much is 6 times 7?
+<br><br>
+	The student then types the answer. 
+	Your program checks the student’s answer. 
+	If correct, print “You are correct!” and then ask another multiplication question.  If the answer is wrong, print “Incorrect. Please try again .”  
+	And then let the student try the same question again repeatedly until the student finally gets it right.
+<br><br>
+	Every correct answer has 5 points. A deduction of 5 points for every incorrect answers. Game will be over once there is no more points to be deducted.
+	  
+	</center> </p> 
+<br>
+<hr>
+
+<!--EXECUTION-->
+<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color:#DBE9FF;  box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);"> <center>
+
+<form class="form" id="form">
+        <h4 class="score" id="score">Score: 20</h4>
+        <h1 id="question"></h1>
+        <input type="text" class="input" id="input" value="" placeholder="Enter your answer" autofocus autocomplete="off">
+        <button type="submit" class="btn">Submit</button>
+        <br>
+        <button type="button" class="btn restart-btn" disabled>Restart Game</button>
+    </form>
+
+    <script>
+        let score = 20; // Starting score
+        let correctAnswer; // Variable to store the correct answer
+
+        function generateQuestion() {
+            const num1 = Math.floor(Math.random() * 10);
+            const num2 = Math.floor(Math.random() * 10);
+            const questionElement = document.getElementById("question"); 
+            questionElement.textContent = `How much is ${num1} times ${num2} ?`;
+            correctAnswer = num1 * num2; // Update correct answer on each question generation
+        }
+
+        // Generate the initial question on page load
+        generateQuestion();
+
+        const formElement = document.getElementById("form");
+        const input = document.getElementById("input");
+        const scoreEl = document.getElementById("score");
+        const restartBtn = document.querySelector('.restart-btn');
+
+        formElement.addEventListener("submit", (e) => {
+            const userAnswer = parseInt(input.value);
+
+            if (userAnswer === correctAnswer) {
+                score += 5;
+                scoreEl.textContent = `Score: ${score}`;
+                alert("You are correct!");
+
+                // Generate a new question after correct answer
+                generateQuestion();
+                restartBtn.disabled = true; // Disable restart button after correct answer
+            } else {
+                if (score > 0) {
+                    score -= 5;
+                }
+                scoreEl.textContent = `Score: ${score}`;
+                alert("Incorrect. Please try again.");
+            }
+
+            input.value = ""; // Clear input field after each submission
+            e.preventDefault();
+
+            // Check for game over (score reaches 0)
+            if (score === 0) {
+                alert("Game over!");
+                restartBtn.disabled = false; // Enable restart button on game over
+            }
+        });
+
+        restartBtn.addEventListener('click', () => {
+            score = 20;
+            scoreEl.textContent = `Score: ${score}`;
+            generateQuestion();
+            restartBtn.disabled = true; // Disable restart button after restarting
+        });
+    </script>
+
+</center>
+</div> </div>
+
+
+<!--NAVIGATION-->
+<hr>
+	<center>
+	<div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color: #A6C9FF; box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);">
+	<table cellpadding="20" cellspacing="10">
+		<tr> 
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="Home.html"> Home </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="1.html"> 1 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 2 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 3 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 4 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 5 </a> </td> </td>
+		</tr>
+	</table>
+	</div>
+	</center>
+</body>
+</html>
