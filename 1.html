@@ -23,9 +23,9 @@
 			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="Home.html"> Home </a> </td>
 			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="1.html"> 1 </a> </td>
 			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 2 </a> </td>
-			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 3 </a> </td>
-			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 4 </a> </td>
-			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 5 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="3.html"> 3 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="4.html"> 4 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="5.html"> 5 </a> </td>
 		</tr>
 	</table>
 	</font>
@@ -65,14 +65,17 @@
 <!--EXECUTION-->
 <div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color:#DBE9FF;  box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);"> <center>
 
-<form class="form" id="form">
-        <h4 class="score" id="score">Score: 20</h4>
-        <h1 id="question"></h1>
-        <input type="text" class="input" id="input" value="" placeholder="Enter your answer" autofocus autocomplete="off">
-        <button type="submit" class="btn">Submit</button>
-        <br>
-        <button type="button" class="btn restart-btn" disabled>Restart Game</button>
-    </form>
+    <body>
+        <center>
+            <form class="form" id="form">
+                <h4 class="score" id="score">Score: 20</h4>
+                <h1 id="question"></h1>
+                <input type="text" class="input" id="input" value="" placeholder="Enter your answer" autofocus autocomplete="off">
+                <button type="submit" class="btn">Submit</button>
+                <br>
+                <button type="button" class="btn restart-btn">Restart Game</button>
+            </form>
+        </center>
 
     <script>
         let score = 20; // Starting score
@@ -81,7 +84,7 @@
         function generateQuestion() {
             const num1 = Math.floor(Math.random() * 10);
             const num2 = Math.floor(Math.random() * 10);
-            const questionElement = document.getElementById("question"); 
+            const questionElement = document.getElementById("question");
             questionElement.textContent = `How much is ${num1} times ${num2} ?`;
             correctAnswer = num1 * num2; // Update correct answer on each question generation
         }
@@ -104,7 +107,6 @@
 
                 // Generate a new question after correct answer
                 generateQuestion();
-                restartBtn.disabled = true; // Disable restart button after correct answer
             } else {
                 if (score > 0) {
                     score -= 5;
@@ -119,7 +121,6 @@
             // Check for game over (score reaches 0)
             if (score === 0) {
                 alert("Game over!");
-                restartBtn.disabled = false; // Enable restart button on game over
             }
         });
 
@@ -127,7 +128,6 @@
             score = 20;
             scoreEl.textContent = `Score: ${score}`;
             generateQuestion();
-            restartBtn.disabled = true; // Disable restart button after restarting
         });
     </script>
 
@@ -144,9 +144,9 @@
 			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="Home.html"> Home </a> </td>
 			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="1.html"> 1 </a> </td>
 			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 2 </a> </td>
-			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 3 </a> </td>
-			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 4 </a> </td>
-			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="2.html"> 5 </a> </td> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="3.html"> 3 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="4.html"> 4 </a> </td>
+			<td align="center"> <span style="color: #007E60; font-size: 20px;"> <a href="5.html"> 5 </a> </td>
 		</tr>
 	</table>
 	</div>
