@@ -32,13 +32,6 @@
 	</div>
 	</center>
 
-<!--SEARCH BAR-->
-	<form method="get" align="center">
-		<input type="text" textarea name="search" placeholder="Start learning" style="padding: 5px; border-radius: 10px;"></textarea>
-		<button type="submit" style="margin: 0 auto; width: 100px; height: 30px; font-size: 20px; border-radius: 10px;">Search</button>
-	</form>
-<hr>
-
 <!--INSTRUCTION-->
 <div style = "max-width: 1000px; margin: 20px auto; padding: 20px 50px; background-color:#DBE9FF;  box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.2);">
 	<font color="#065CE0"> <font face="Monospace"> <font size="5">
@@ -59,6 +52,12 @@
             function addEntry() {
                 var name = document.getElementById("name").value;
                 var phoneNumber = document.getElementById("phoneNumber").value;
+
+                // Check if the phone number has exactly 11 digits
+                if (!(/^\d{11}$/.test(phoneNumber))) {
+                    alert("Invalid phone number. Please enter exactly 11 digits.");
+                    return false; // Prevent form submission
+                }
 
                 // Add entry to phoneBook
                 phoneBook[name] = phoneNumber;
@@ -114,7 +113,7 @@
 
         <hr>
 
-        <h3>Search Phone Number:</h3>
+        <h3>Search:</h3>
         <form onsubmit="event.preventDefault(); searchPhoneNumber();">
             <input type="text" id="search" placeholder="Enter name or phone number to search"><br>
             <button type="submit">Search</button>
